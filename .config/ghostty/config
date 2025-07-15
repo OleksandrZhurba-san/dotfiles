@@ -1,0 +1,22 @@
+#theme = Ghostty Default StyleDark
+#theme = rose-pine
+theme = 3024 Night
+
+#font-family = JetBrains Mono
+font-family = LiterationMono Nerd Font
+#font-family = "ComicShannsMono Nerd Font"
+font-size = 22
+
+background-opacity = 1
+background-blur = false
+cursor-style = bar
+cursor-style-blink = true
+cursor-invert-fg-bg
+
+window-save-state = always
+window-padding-balance = true
+#adjust-cell-height = 35%
+window-colorspace = "display-p3"
+
+keybind = cmd+s>r=reload_config
+
