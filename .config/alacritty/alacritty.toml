@@ -1,0 +1,48 @@
+general.import = [
+  "~/.config/alacritty/themes/themes/tokyo-night.toml"
+]
+general.live_config_reload = true
+#working_directory = "~/development"
+[window]
+decorations = "Full"
+opacity = 1
+blur = true
+startup_mode = "Maximized"
+padding = { x = 5, y = 5 }
+title = "badabeembadaboom"
+dynamic_title = false
+resize_increments = true
+
+[font]
+#normal = { family = "ComicShannsMono Nerd Font", style="Regular" }
+normal = { family = "UbuntuMono Nerd Font", style="Regular" }
+#normal = { family = "GoMono Nerd Font", style="Regular" }
+#normal = { family = "JetBrainsMono Nerd Font", style="Regular" }
+size = 26
+
+[cursor]
+style = { shape = "Block", blinking = "On" }
+
+[terminal]
+osc52 = "CopyPaste"
+
+[scrolling]
+history = 10000
+multiplier = 2
+
+[mouse]
+bindings = [
+{ mouse = "Right", action = "Paste" },
+]
+
+
+[keyboard]
+bindings = [
+{ key = "l", mods= "Control|Shift", action="ClearLogNotice"},
+{ key = "n", mods= "Control|Shift", action="CreateNewTab"},
+{ key = "Tab", mods= "Control", action="SelectNextTab"},
+{ key = "u", mods= "Control|Shift", action="ScrollHalfPageUp"},
+{ key = "d", mods= "Control|Shift", action="ScrollHalfPageDown"},
+{ key = "j", mods= "Alt", action="ScrollLineDown"},
+{ key = "k", mods= "Alt", action="ScrollLineUp"},
+]
