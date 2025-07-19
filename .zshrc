@@ -1,21 +1,3 @@
-# alacritty competebility props
-#
-export TERM="alacritty"
-#bindkey "^[[A" history-search-backward
-#bindkey "^[[B" history-search-forward
-
-# VULKAN ENV VARIABLES
-export VULKAN_ROOT_LOCATON=$HOME
-export VULKAN_SDK_VERSION=1.3.275.0
-export VULKAN_SDK=$VULKAN_ROOT_LOCATON/VulkanSDK/$VULKAN_SDK_VERSION/macOS
-export VK_ICD_FILENAMES=$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json
-export VK_LAYER_PATH=$VULKAN_SDK/share/vulkan/explicit_layer.d 
-export DYLD_LIBRARY_PATH=$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export REACT=$(cd /Users/oleksandrzhurba/development/ts/ITCH/React)
-export SFML=/opt/homebrew/Cellar/sfml/'2.6.1'
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -23,33 +5,25 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+unset zle_bracketed_paste
+# User's aliases
+alias vim=nvim
+alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
 
 # If you come from bash you might have to change your $PATH.
-ANDROID_HOME=/Users/oleksandrzhurba/Library/Android/sdk
-MOUSE_FIX=~/Documents/'fixmouse-1.0.1'/
-DEV_PATH=~/development/bin
-MONGODB=~/'mongodb-macos-aarch64-8.0.0'/bin
-PLAN9=/Users/oleksandrzhurba/development/plan9
-CARGO_BIN=/Users/oleksandrzhurba/.cargo/bin
-export MONGODB
-export ANDROID_HOME
-export PLAN9
-export MY_UTILS
-export PATH=$(go env GOPATH)/bin:$MONGODB:$DEV_PATH:$VULKAN_SDK/bin:$HOME/bin:/usr/local/bin:/opt/homebrew/bin:$ANDROID_HOME/platform-tools:$MOUSE_FIX:$PATH:$PLAN9/bin:$CARGO_BIN/
-export font=/mnt/font/Monaco/18a/font
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-
-#alias acme=$PLAN9/bin/acme
-
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
+#
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -110,11 +84,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git 
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -129,37 +99,23 @@ source $ZSH/oh-my-zsh.sh
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias vim=nvim
-alias react="cd /Users/oleksandrzhurba/development/ts/ITCH/React"
-alias back="cd /Users/oleksandrzhurba/development/ts/ITCH/Node"
-alias dev="~/development"
-alias neofetch=hyfetch
-alias nf=hyfetch
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-___MY_VMOPTIONS_SHELL_FILE="${HOME}/.jetbrains.vmoptions.sh"; if [ -f "${___MY_VMOPTIONS_SHELL_FILE}" ]; then . "${___MY_VMOPTIONS_SHELL_FILE}"; fi
-. "/Users/oleksandrzhurba/.deno/env"
-
-[[ -s "/Users/oleksandrzhurba/.gvm/scripts/gvm" ]] && source "/Users/oleksandrzhurba/.gvm/scripts/gvm"
