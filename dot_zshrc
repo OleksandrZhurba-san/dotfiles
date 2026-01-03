@@ -13,6 +13,7 @@ alias dev='cd ~/development/'
 alias ce='chezmoi edit'
 alias ca='chezmoi apply'
 alias ccd='chezmoi cd'
+alias cadd='chezmoi add'
 
 # NVM
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
