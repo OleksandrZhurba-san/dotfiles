@@ -1,19 +1,10 @@
-# prompt config (from your zshrc)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# nvm (from your zshrc)
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
-# bun completions (split OS-specific path)
-{{ if eq .os "linux" -}}
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-{{- else if eq .os "darwin" -}}
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-{{- end }}
 
-# sdkman (keep near end)
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# starship must stay last
 eval "$(starship init zsh)"
