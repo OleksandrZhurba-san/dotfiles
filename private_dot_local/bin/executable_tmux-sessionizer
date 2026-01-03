@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# ---- config ----
+ROOTS=(
+  "$HOME/development"
+  "$HOME/.config"
+)
+MAX_DEPTH=2
+# ---------------
+
+pick_dir() {
+  for r in "${ROOTS[@]}"; do
+    [ -d "$r" ] || continue
+    find "$r" -mindepth 1 -maxdepth "$MAX_DEPTH" -type d \
+      -not -path '*/.git/*' 2>/dev/null
+  done
+}
+
+# fzf returns non-zero on Esc/cancel — that's not an error for us
+selected="$(
+  pick_dir | sort -u | fzf --prompt="project > " --height=70% --reverse
+)" || exit 0
+
+[ -z "${selected:-}" ] && exit 0
+
+# session name = project dir name (as you prefer)
+session="$(basename "$selected" | tr . _ )"
+
+# 1) If tmux server isn't running at all -> start it normally
+if ! tmux ls >/dev/null 2>&1; then
+  exec tmux new-session -s "$session" -c "$selected"
+fi
+
+# 2) Ensure session exists (detached create)
+if ! tmux has-session -t "$session" 2>/dev/null; then
+  tmux new-session -d -s "$session" -c "$selected"
+fi
+
+# 3) If we're inside any tmux client (pane OR popup), switch client
+if tmux display-message -p '#S' >/dev/null 2>&1; then
+  tmux switch-client -t "$session"
+  exit 0
+fi
+
+# 4) Otherwise we're outside tmux client but server exists -> attach
+exec tmux attach -t "$session"
+
