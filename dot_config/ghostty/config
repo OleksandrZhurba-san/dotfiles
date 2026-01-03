@@ -1,0 +1,22 @@
+theme = Catppuccin Mocha
+
+font-family = JetBrainsMono Nerd Font
+# font-family = LiterationMono Nerd Font
+# font-family = ComicShannsMono Nerd Font
+# font-family = Liga SFMono Nerd Font
+font-size = 18
+# font-feature = -liga,-calt,-dlig
+
+background-opacity = 1
+background-blur = true
+cursor-style = block
+cursor-style-blink = true
+cursor-invert-fg-bg
+
+window-save-state = always
+window-padding-balance = true
+#adjust-cell-height = 35%
+window-colorspace = "display-p3"
+
+keybind = cmd+s>r=reload_config
+
