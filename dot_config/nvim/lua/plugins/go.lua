@@ -11,6 +11,7 @@ return {
       require("go").setup({
         lsp_cfg = true,
         lsp_on_attach = true,
+        lsp_inlay_hints = false,
       })
     end,
   },
