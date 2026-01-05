@@ -11,6 +11,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export SDKMAN_DIR="$HOME/.sdkman"
 
+export PLAN9="$HOME/development/plan9/"
+plan9() {
+    export PATH="$PATH:$PLAN9/bin"
+    echo "Plan 9 tools enabled for this shell"
+  }
+
 {{- if eq .os "linux" }}
 export PATH="/var/lib/snapd/snap/bin:$PATH"
 {{- end }}
