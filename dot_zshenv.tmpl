@@ -11,12 +11,16 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 export SDKMAN_DIR="$HOME/.sdkman"
 
-export PLAN9="$HOME/development/plan9/"
+export PLAN9="$HOME/development/plan9"
 export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+export RUSTHOME="$HOME/.cargo"
+export PATH="$RUSTHOME/bin:$PATH"
 
 {{ if eq .chezmoi.os "darwin" }}
 plan9() {
-    export PATH="$PATH:$PLAN9/bin:$GOPATH/bin"
+    export PATH="$PATH:$PLAN9/bin"
     echo "Plan 9 tools enabled for this shell"
   }
 {{ end }}
