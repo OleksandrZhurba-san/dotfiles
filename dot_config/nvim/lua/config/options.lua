@@ -11,3 +11,4 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 
 vim.o.conceallevel = 0
+vim.lsp.enable("biome")
